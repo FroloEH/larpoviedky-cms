@@ -1,15 +1,16 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
-import './all.sass'
+import Footer from './Footer'
+import Header from './Header'
+import Navbar from './Navbar'
+import '../assets/sass/main.css'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
 
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata()
   return (
-    <div>
+    <>
       <Helmet>
         <html lang="en" />
         <title>{title}</title>
@@ -47,11 +48,22 @@ const TemplateWrapper = ({ children }) => {
           property="og:image"
           content={`${withPrefix('/')}img/og-image.jpg`}
         />
+
+        <script src="assets/js/jquery.min.js"></script>
+			  <script src="assets/js/jquery.scrolly.min.js"></script>
+			  <script src="assets/js/jquery.scrollex.min.js"></script>
+			  <script src="assets/js/browser.min.js"></script>
+			  <script src="assets/js/breakpoints.min.js"></script>
+			  <script src="assets/js/util.js"></script>
+			  <script src="assets/js/main.js"></script>
       </Helmet>
-      <Navbar />
-      <div>{children}</div>
+      
+      <Header/>
+      <Navbar/>
+        {children}
       <Footer />
-    </div>
+      
+    </>
   )
 }
 
